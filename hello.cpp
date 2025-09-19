@@ -1,6 +1,28 @@
 #include <iostream>
 using namespace std;
+
 int main() {
-    cout << "Welcome to DSA Lab 2!" << endl;
+    const int size = 20;   
+    int *salArray = new int[size];   // dynamic memory allocation
+
+    // Input salaries
+    for (int i = 0; i < size; i++) {
+        cout << "Enter Salary for employee " << (i + 1) << ": ";
+        cin >> *(salArray + i);   // pointer notation
+    }
+
+    // Apply increment formula
+    for (int i = 0; i < size; i++) {
+        *(salArray + i) = *(salArray + i) + *(salArray + i) / (i + 1);
+    }
+
+    // Display updated salaries
+    cout << "\nUpdated Salaries: ";
+    for (int i = 0; i < size; i++) {
+        cout << *(salArray + i) << " ";
+    }
+    cout << endl;
+
+    delete [] salArray;   // free memory
     return 0;
 }
